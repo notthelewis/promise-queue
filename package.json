@@ -1,0 +1,12 @@
+{
+    "scripts": {
+        "go": "tsc index.ts && node index.js"
+    },
+    "dependencies": {
+        "typescript": "^5.0.3"
+    },
+    "devDependencies": {
+        "@types/node": "^18.15.11",
+        "prettier": "^2.8.7"
+    }
+}
