@@ -24,8 +24,10 @@ async function runQueue(tasks: Array<Function>, parallelLimit: number) {
                 }
             }
 
+            // I think a good portion of the race conditions could probably be resolved if I didn't use object pooling
+            // but instead just created a new object every time. 
             if (queueStreamsLeft) {
-                runQueue[queueIndex].promise = tasks[taskIndex--]();
+                runQueue[queueIndex].promise = tasks[taskIndex--](); // This seems to be the offending line
                 runQueue[queueIndex].promise.then(res => {
                     queueNext(res, queueIndex);
                 });
