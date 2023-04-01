@@ -3,7 +3,7 @@ type RunQueueEntry = {
     promise: Promise<unknown>;
 };
 
-async function runQueue(tasks: Array<Function>, parallelLimit: number) {
+async function runQueue(tasks: Array<()=> Promise<unknown>>, parallelLimit: number) {
     if (!tasks.length || !parallelLimit) throw new Error('runQueue::BAD_PARAMETERS');
 
     return new Promise((resolve) => {
