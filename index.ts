@@ -35,7 +35,7 @@ async function runQueue(tasks: Array<()=> Promise<unknown>>, parallelLimit: numb
         };
 
         for (let queueIndex = 0; queueIndex < parallelLimit; queueIndex++) {
-            // different from getNext, as we have to construct the initial objects
+            // different from queueNext, as we have to construct the initial objects before pooling
             if (tasks[taskIndex]) {
                 runQueue[queueIndex] = {
                     queueIndex,
